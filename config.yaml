@@ -1,0 +1,47 @@
+# ─────────────────────────────────────────────
+#  Toluene Free Energy Workflow — ASE + MACE
+# ─────────────────────────────────────────────
+
+# ── Environment ───────────────────────────────
+conda_env: your_conda_env_name      # CHANGE THIS
+
+# ── MACE ─────────────────────────────────────
+mace_model: medium                  # small / medium / large
+mace_device: cuda                   # cuda or cpu
+
+# ── SLURM ────────────────────────────────────
+partition: normal                   # CHANGE THIS
+account: ""                         # CHANGE THIS or leave empty
+walltime: "02:00:00"
+cpus_per_task: 8                    # CPUs per MD job (for data loading)
+gpus_per_task: 1                    # set 0 if no GPU available
+
+# ── Simulation box ────────────────────────────
+n_molecules: 10                     # toluene molecules in box
+density_gcc: 0.867                  # g/cm^3 — liquid toluene density at 300K
+                                    # use 0.004 for gas phase
+
+# ── MD parameters ────────────────────────────
+timestep_fs: 1.0                    # femtoseconds
+equil_ps: 2.0                       # NVT equilibration before NPT production
+prod_ps: 10.0                       # NPT production per temperature point
+dump_every_fs: 1                    # store trajectory every N fs
+pressure_atm: 1.0                   # target pressure
+
+# ── Temperature grid ─────────────────────────
+temperatures_K:
+  - 100
+  - 200
+  - 300
+  - 400
+  - 500
+  - 600
+  - 700
+  - 800
+  - 900
+  - 1000
+  - 1100
+  - 1200
+  - 1300
+  - 1400
+  - 1500

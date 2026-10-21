@@ -1,0 +1,21 @@
+# Trajectories — large, don't commit
+md/trajectories/
+results/*.png
+
+# Keep CSVs and JSON results
+!results/*.csv
+!md/trajectories/**/results.json
+!md/trajectories/**/thermo.csv
+
+# SLURM logs
+job_scripts/logs/
+job_scripts/array_job.sh
+job_scripts/array_job_id.txt
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS
+.DS_Store
